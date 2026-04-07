@@ -8,6 +8,8 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=wealthsimple.com
 // @grant        none
 // @license MIT
+// @homepageURL  https://github.com/wealthsimple-options
+// @supportURL  https://github.com/wealthsimple-options
 // ==/UserScript==
 
 // Tampermonkey
