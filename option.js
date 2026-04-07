@@ -9,6 +9,7 @@
 // @grant        none
 // ==/UserScript==
 
+// Tampermonkey
 function opt(profit_target) {
     localStorage.setItem("opt_profit_target", profit_target);
     var symbol = document.querySelector('[aria-label="Go back"] p').textContent.trim();
