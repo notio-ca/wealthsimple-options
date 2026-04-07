@@ -7,6 +7,7 @@
 // @match        https://my.wealthsimple.com/app/security-details/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=wealthsimple.com
 // @grant        none
+// @license MIT
 // ==/UserScript==
 
 // Tampermonkey
