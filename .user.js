@@ -7,12 +7,12 @@
 // @match        https://my.wealthsimple.com/app/security-details/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=wealthsimple.com
 // @grant        none
-// @license MIT
+// @license      MIT
 // @homepageURL  https://github.com/wealthsimple-options
-// @supportURL  https://github.com/wealthsimple-options
-// @copyright 2026, lukecharters (https://openuserjs.org/users/lukecharters)
-// @downloadURL https://openuserjs.org/install/lukecharters/WS_Options.user.js
-// @updateURL https://openuserjs.org/meta/lukecharters/WS_Options.meta.js
+// @supportURL   https://github.com/wealthsimple-options
+// @copyright    2026, lukecharters (https://openuserjs.org/users/lukecharters)
+// @downloadURL  https://openuserjs.org/install/lukecharters/WS_Options.user.js
+// @updateURL    https://openuserjs.org/meta/lukecharters/WS_Options.meta.js
 // ==/UserScript==
 
 // Tampermonkey
