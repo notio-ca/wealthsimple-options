@@ -10,6 +10,9 @@
 // @license MIT
 // @homepageURL  https://github.com/wealthsimple-options
 // @supportURL  https://github.com/wealthsimple-options
+// @copyright 2026, lukecharters (https://openuserjs.org/users/lukecharters)
+// @downloadURL https://openuserjs.org/install/lukecharters/WS_Options.user.js
+// @updateURL https://openuserjs.org/meta/lukecharters/WS_Options.meta.js
 // ==/UserScript==
 
 // Tampermonkey
