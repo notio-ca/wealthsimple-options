@@ -4,7 +4,7 @@
 // @version      2026-04-06
 // @description  Get the right strike
 // @author       Luke Charters
-// @match        https://my.wealthsimple.com/app/security-details/*
+// @match        https://my.wealthsimple.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=wealthsimple.com
 // @grant        none
 // @license      MIT
@@ -15,7 +15,7 @@
 // @updateURL    https://openuserjs.org/meta/lukecharters/WS_Options.meta.js
 // ==/UserScript==
 
-// Tampermonkey
+// Tampermonkey https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en-US&utm_source=ext_sidebar
 function opt(profit_target) {
     localStorage.setItem("opt_profit_target", profit_target);
     var symbol = document.querySelector('[aria-label="Go back"] p').textContent.trim();
@@ -27,7 +27,7 @@ function opt(profit_target) {
         try {
             var cells = row.firstElementChild.firstElementChild.firstElementChild.children;
             var strke = cells[0].textContent.replace("$", "");
-            var volume = parseInt(cells[2].textContent.trim());
+            var volume = parseInt(cells[2].textContent.trim().replace(",",""));
             if (volume < 3) { return; }
             var delta = parseInt(parseFloat(cells[4].textContent.trim().replace("−", "")) * 100);
             var price = cells[5].textContent.replace("$", "").split("(")[0];
@@ -63,14 +63,16 @@ function opt(profit_target) {
 const toolbar = document.createElement('div');
 toolbar.style.cssText = `
         position: fixed; bottom: 100px; right: 25px; z-index: 999997;
-        display: flex; gap: 8px;
     `;
 toolbar.innerHTML = `
-        <div style="max-height:90vh; overflow-y: auto; background-color: #333; color:#FFF; padding:15px; border-radius:15px;">
+        <div style="max-height:80vh; overflow-y: auto; background-color: #333; color:#FFF; padding:15px; border-radius:15px;">
             <div id="opt_result" style='display:block;'></div>
             <input type="number" id="profit_target" value="${(localStorage.getItem("opt_profit_target") || "")}" placeholder="Daily Profit Target" style="width:100%; margin-top:10px; padding:8px; border-radius:8px; border:none; text-align:right;">
         </div>
-        <div style="display:block;"><button id="tm-btn-run" style="cursor:pointer; padding:8px 14px;border-radius:8px;border:none;background:#a6e3a1;color:#1e1e2e;font-weight:bold;">Make $</button></div>
+        <div style="margin-top:5px;">
+            <button id="tm-btn-run" style="cursor:pointer; padding:8px 14px;border-radius:8px;border:none;background:#a6e3a1;color:#1e1e2e;font-weight:bold;">Make $</button>
+            <button id="tm-btn-close" style="opacity:50%; margin-left:10px; cursor:pointer; padding:8px 14px;border-radius:8px;border:none;background:#a6e3a1;color:#1e1e2e;font-weight:bold;">X</button>
+        </div>
     `;
 document.body.appendChild(toolbar);
 
@@ -78,4 +80,7 @@ toolbar.querySelector('#tm-btn-run').addEventListener('click', () => {
     var profit_target = toolbar.querySelector('#profit_target').value.trim();
     if (profit_target === null) { return; }
     opt(profit_target);
+});
+toolbar.querySelector('#tm-btn-close').addEventListener('click', () => {
+    toolbar.style.cssText = "display: none;";
 });
