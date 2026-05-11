@@ -24,11 +24,12 @@ function opt(profit_target) {
     var rows = document.querySelector('[data-test-id="contract-list-container"]').firstElementChild.children;
     var tr = "";
     Array.from(rows).forEach(function(row) {
+        //console.log(row);
         try {
-            var cells = row.firstElementChild.firstElementChild.firstElementChild.children;
-            var strke = cells[0].textContent.replace("$", "");
+            var cells = row.firstElementChild.firstElementChild.children;
+            var strke = cells[0].textContent.replace("$", "").split("−")[0];
             var volume = parseInt(cells[2].textContent.trim().replace(",",""));
-            if (volume < 3) { return; }
+            //if (volume < 3) { return; }
             var delta = parseInt(parseFloat(cells[4].textContent.trim().replace("−", "")) * 100);
             var price = cells[5].textContent.replace("$", "").split("(")[0];
             var profit_day = (price * 100) / (dte + 1);
