@@ -15,6 +15,10 @@
 // @updateURL    https://openuserjs.org/meta/lukecharters/WS_Options.meta.js
 // ==/UserScript==
 
+/*
+----- SOURCE
+https://github.com/notio-ca/wealthsimple-options/blob/main/.user.js
+*/
 // Tampermonkey https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en-US&utm_source=ext_sidebar
 function opt(profit_target) {
     localStorage.setItem("opt_profit_target", profit_target);
@@ -35,7 +39,7 @@ function opt(profit_target) {
             var profit_day = (price * 100) / (dte + 1);
             var percent_year = ((profit_day * 365) / (strke * 100)) * 100;
             if (profit_target) {
-                if (profit_day > (profit_target * 1.40) || profit_day < profit_target) { return; }
+                if (percent_year > (profit_target * 1.40) || percent_year < profit_target) { return; }
             }
             tr += `<tr style="color: #AAA;"><td style="text-align:right;">${strke}</td><td style="text-align:right;">${delta}</td><td style="text-align:right;">${price}</td><td style="text-align:right;">${profit_day.toFixed(2)}</td><td style="text-align:right;">${percent_year.toFixed(2)}%</td></tr>`;
         } catch (error) {
