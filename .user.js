@@ -23,7 +23,7 @@ https://github.com/notio-ca/wealthsimple-options/blob/main/.user.js
 function opt(profit_target) {
     localStorage.setItem("opt_profit_target", profit_target);
     var symbol = "";//document.querySelector('[aria-label="Go back"] p').textContent.trim();
-    var dte = parseInt(document.querySelector('[data-scope="menu"] > div > p').textContent.trim().split("(")[1].split("d")[0]);
+    var dte = parseInt(document.querySelector('[data-scope="menu"]').firstElementChild.firstElementChild.textContent.trim().split("(")[1].split("d")[0]);
     var side = new URLSearchParams(window.location.search).get("optionType") || "N/A";
     var rows = document.querySelector('[data-test-id="contract-list-container"]').firstElementChild.children;
     var tr = "";
